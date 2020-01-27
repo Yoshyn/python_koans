@@ -16,9 +16,19 @@
 # and
 #   about_triangle_project_2.py
 #
+
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+  sides = [a,b,c]
+  for side in sides:
+    if (side <= 0): raise TriangleError('One side is inf to 0')
+
+  if (((a+b) < c) or ((a+c) < b) or ((b+c) < a)):
+    raise TriangleError('Not a triangle')
+
+  define_kind = set(sides)
+  if (len(define_kind) == 1): return 'equilateral'
+  if (len(define_kind) == 2): return 'isosceles'
+  return 'scalene'
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):
