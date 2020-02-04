@@ -31,10 +31,22 @@ from runner.koan import *
 # More scoring examples are given in the tests below:
 #
 # Your goal is to write the score method.
+import functools
+
+def count_points(count, number):
+    points = number * 100 if count > 2 else 0
+    if (number == 5):
+        points += (count % 3) * 50
+    if (number == 1):
+        points += (count % 3) * 10
+        points *= 10
+    return points
 
 def score(dice):
-    # You need to write this method
-    pass
+    result = 0
+    for dice_value in range(1,7):
+        result+= count_points(dice.count(dice_value), dice_value)
+    return result
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):

@@ -19,6 +19,7 @@
 
 def triangle(a, b, c):
   sides = [a,b,c]
+
   for side in sides:
     if (side <= 0): raise TriangleError('One side is inf to 0')
 
